@@ -1,7 +1,7 @@
-import React, { useState , useReducer} from 'react';
+import React, { useState} from 'react';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
 import {Button} from 'react-native-elements';
-import Calculations from './components/Calculations';
+import Calculations from './Calculations';
 
 const Calculate = ({buttonTitle, lat1, lon1, lat2,lon2, distance, bearing}) => {
     const [state, setState] = useState({coordinate: ''});
@@ -33,14 +33,21 @@ const Calculate = ({buttonTitle, lat1, lon1, lat2,lon2, distance, bearing}) => {
             <Button 
             title= {buttonTitle}
             onPress = {() =>{
-                dist = Calculations.computeDistance(lat1, lon1, lat2, lon2);
-                bear = Calculations.computeBearing(lat1, lon1, lat2, lon2);
-                updateStateObject({distance: `Distance: ${dist}km`});
+                dist = Calculations.computeDistance({coordinate: lat1}, {coordinate: lon1}, {coordinate: lat2}, {coordinate: lon2});
+                bear = Calculations.computeBearing({coordinate: lat1}, {coordinate: lon1}, {coordinate: lat2}, {coordinate: lon2});
+                updateStateObject({distance: `Distance: ${dist}`});
                 updateStateObject({bearing: `Bearing: ${bear}`});
             }} />
         </View>
     );
 };
 
-
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
 export default Calculate;

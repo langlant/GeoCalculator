@@ -1,3 +1,4 @@
+const Calculations = () =>{
 // Converts from degrees to radians.
 function toRadians(degrees) {
     return (degrees * Math.PI) / 180;
@@ -44,5 +45,6 @@ function toRadians(degrees) {
   function round(value, decimals) {
     return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
   }
- 
- 
+}
+
+export default Calculations;
