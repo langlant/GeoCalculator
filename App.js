@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Calculate from './components/Calculate';
-//import Clear from './components/Clear';
+import Clear from './components/Clear';
 
 //need to put clear underneath Calculate
 export default function App() {

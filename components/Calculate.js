@@ -4,7 +4,7 @@ import {Button} from 'react-native-elements';
 import {computeDistance, computeBearing} from './Calculations';
 
 const Calculate = ({buttonTitle, lat1, lon1, lat2,lon2, distance, bearing}) => {
-    const [state, setState] = useState({coordinate: ''});
+    const [state, setState] = useState({lat1: '', lon1: '', lat2: '', lon2: '', distance: '', bearing: ''});
 
     const updateStateObject = (vals) =>{
         setState({
@@ -15,29 +15,31 @@ const Calculate = ({buttonTitle, lat1, lon1, lat2,lon2, distance, bearing}) => {
     return (
         <View style={styles.container}>
             <TextInput 
-                placeholder = 'Enter the latitude of your starting location.' 
-                onChangeText = {(lat1) => updateStateObject({coordinate: lat1})} //or you could do (val) => {setName(val);}
+                placeholder = 'Starting latitude' 
+                onChangeText = {(lat1) => updateStateObject({lat1: lat1})} //or you could do (val) => {setName(val);}
                 value = {state.lat1}/>
             <TextInput 
-                placeholder = 'Enter the longitude of your starting location.' 
-                onChangeText = {(lon1) => updateStateObject({coordinate: lon1})} //or you could do (val) => {setName(val);}
+                placeholder = 'Starting longitude' 
+                onChangeText = {(lon1) => updateStateObject({lon1: lon1})} //or you could do (val) => {setName(val);}
                 value = {state.lon1}/>
             <TextInput 
-                placeholder = 'Enter the latitude of your end location.' 
-                onChangeText = {(lat2) => updateStateObject({coordinate: lat2})} //or you could do (val) => {setName(val);}
+                placeholder = 'Ending latitude' 
+                onChangeText = {(lat2) => updateStateObject({lat2: lat2})} //or you could do (val) => {setName(val);}
                 value = {state.lat2}/>
             <TextInput 
-                placeholder = 'Enter the longitude of your end location.' 
-                onChangeText = {(lon2) => updateStateObject({coordinate: lon2})} //or you could do (val) => {setName(val);}
+                placeholder = 'Ending longitude' 
+                onChangeText = {(lon2) => updateStateObject({lon2: lon2})} //or you could do (val) => {setName(val);}
                 value = {state.lon2}/>
             <Button 
             title= {buttonTitle}
             onPress = {() =>{
-                dist = computeDistance({coordinate: lat1}, {coordinate: lon1}, {coordinate: lat2}, {coordinate: lon2});
-                bear = computeBearing({coordinate: lat1}, {coordinate: lon1}, {coordinate: lat2}, {coordinate: lon2});
-                updateStateObject({distance: `Distance: ${dist}`});
-                updateStateObject({bearing: `Bearing: ${bear}`});
+                state.distance = computeDistance(lat1, lon1, lat2, lon2);
+                state.bearing = computeBearing(lat1, lon1, lat2, lon2);
+                updateStateObject({distance: `Distance: ${distance}`});
+                updateStateObject({bearing: `Bearing: ${bearing}`});
             }} />
+            <Text> {state.distance}</Text>
+            <Text> {state.bearing}</Text>
         </View>
     );
 };
