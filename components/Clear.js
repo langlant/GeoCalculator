@@ -12,7 +12,7 @@ const Clear = () =>{
       onPress = {() => {
         updateStateObject({lat1: ''},{lon1: ''},{lat2: ''},{lon2: ''},{distance: ''}, {bearing: ''});
 
-      }}s
+      }}
       />
     />
 </View>
