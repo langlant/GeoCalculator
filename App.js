@@ -9,7 +9,6 @@ export default function App() {
     <View style={styles.container}>
       <Text> 'Please enter your coordinates you wish to calculate.' </Text>
       <Calculate buttonTitle = 'Calculate'/>
-      <Clear buttonTitle = 'Clear'/>
     </View>
   );
 }
