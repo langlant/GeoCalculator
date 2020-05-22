@@ -8,7 +8,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text> 'Please enter your coordinates you wish to calculate.' </Text>
-      <Calculate buttonTitle = 'Calculate'/>
+      <Calculate buttonTitle = 'Calculate' buttonTitle2 = 'Clear'/>
     </View>
   );
 }
