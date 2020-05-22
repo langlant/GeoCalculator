@@ -39,7 +39,8 @@ const Calculate = ({buttonTitle, buttonTitle2, latt1, lon1, lat2,lon2, distance,
             <Button 
             title= {buttonTitle2}
             onPress = {() =>{
-               updateStateObject({lat1: ''}, {lon1: ''},{lat2: ''}, {lon2: ''}, {distance: ''}, {bearing: ''})/>
+               updateStateObject({lat1: ''}, {lon1: ''},{lat2: ''}, {lon2: ''}, {distance: ''}, {bearing: ''})
+}}/>
             <Text> {state.distance}</Text>
             <Text> {state.bearing}</Text>
         </View>
