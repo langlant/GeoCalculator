@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, TextInput} from 'react-native';
 import {Button} from 'react-native-elements';
 import {computeDistance, computeBearing} from './Calculations';
 
-const Calculate = ({buttonTitle, lat1, lon1, lat2,lon2, distance, bearing}) => {
+const Calculate = ({buttonTitle, buttonTitle2, latt1, lon1, lat2,lon2, distance, bearing}) => {
     const [state, setState] = useState({lat1: '', lon1: '', lat2: '', lon2: '', distance: '', bearing: ''});
 
     const updateStateObject = (vals) =>{
@@ -33,8 +33,13 @@ const Calculate = ({buttonTitle, lat1, lon1, lat2,lon2, distance, bearing}) => {
             <Button 
             title= {buttonTitle}
             onPress = {() =>{
-                UpdateStateObject({distance: `Distance: ${computeDistance( lat1, lon1, lat2, lon2)}`}, {bearing: `Bearing: ${computeBearing(lat1, lon1, lat2, lon2)}`}
+                updateStateObject({distance: `Distance: ${computeDistance( lat1, lon1, lat2, lon2)}`}, {bearing: `Bearing: ${computeBearing(lat1, lon1, lat2, lon2)}`}
             }} />
+
+            <Button 
+            title= {buttonTitle2}
+            onPress = {() =>{
+               updateStateObject({lat1: ''}, {lon1: ''},{lat2: ''}, {lon2: ''}, {distance: ''}, {bearing: ''})/>
             <Text> {state.distance}</Text>
             <Text> {state.bearing}</Text>
         </View>
